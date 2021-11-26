@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <form method="POST" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.stage.label(class="form-group") }}
+      {{form.stage(class='form-control bg-dark text-white', rows="10")  }}<br>
+      {% for error in form.stage.errors %}
+        <span style="color: red;">[{{ error }}]</span><br>
+      {% endfor %}
+    </div>
+    <div class="form-group">
+      {{ form.question.label(class="form-group") }}
+      {{form.question(class='form-control bg-dark text-white')  }}<br>
+      {% for error in form.question.errors %}
+        <span style="color: red;">[{{ error }}]</span><br>
+      {% endfor %}
+    </div>
+    <div class="form-group">
+      {{ form.ans.label(class="form-group") }}
+      {{form.ans(class='form-control bg-dark text-white')  }}<br>
+      {% for error in form.ans.errors %}
+        <span style="color: red;">[{{ error }}]</span><br>
+      {% endfor %}
+    </div>
+    <div class="form-group">
+      {{ form.picture.label(class="") }}
+      {{form.picture(class='bg-dark text-white')  }}<br>
+      {% for error in form.picture.errors %}
+        <span style="color: red;">[{{ error }}]</span><br>
+      {% endfor %}
+    </div>
+    <div class="form-group text-center">
+        {{ form.submit(class="btn btn-danger") }}
+    </div>
+  </form>
+  <h1 class="text-center">Stages</h1>
+  {% for stage in stages %}
+    <div class="card bg-dark my-2">
+      <div class="card-body">
+        <p>{{stage.stage}}. {{stage.question}}</p>
+        <p>Ans. {{stage.ans}}</p>
+        <img align='center' class="img-fluid" src="{{ url_for('static', filename='challenge_pics/' + stage.picture) }}">
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+{% endblock %}

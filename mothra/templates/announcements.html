@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container">
+    {% for ancmt in ancmts %}
+      <div class="card bg-dark" style="margin-top:2%">
+        <div class="card-body">
+          {{ancmt.message}}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

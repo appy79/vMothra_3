@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container text-center">
+    <h2>Admin Panel</h2>
+  <div class="row" style="margin-top:10%">
+    <div class="col-sm" style="margin-top:5%">
+      <a href="{{ url_for('godzilla.add_stage') }}" class="btn btn-success btn-lg active btn-block" role="button" aria-pressed="true">Stages</a>
+    </div>
+    <div class="col-sm" style="margin-top:5%">
+      <a href="{{ url_for('godzilla.review') }}" class="btn btn-warning btn-lg active btn-block" role="button" aria-pressed="true">Review</a>
+    </div>
+    <div class="col-sm" style="margin-top:5%">
+      <a href="{{ url_for('godzilla.announce') }}" class="btn btn-danger btn-lg active btn-block" role="button" aria-pressed="true">Announce</a>
+    </div>
+  </div>
+  <div class="row" style="margin-top:5%">
+    <div class="col-sm" style="margin-top:5%">
+      <a href="{{ url_for('godzilla.all_users') }}" class="btn btn-info btn-lg active btn-block" role="button" aria-pressed="true">All Users</a>
+    </div>
+    <div class="col-sm" style="margin-top:5%">
+      <a href="{{ url_for('godzilla.dnotif') }}" class="btn btn-dark btn-lg active btn-block" role="button" aria-pressed="true">DN</a>
+    </div>
+    <div class="col-sm" style="margin-top:5%">
+      <a href="{{ url_for('godzilla.all_subs') }}" class="btn btn-light btn-lg active btn-block" role="button" aria-pressed="true">All Subs</a>
+    </div>
+  </div>
+  <div class="row" style="margin-top:5%">
+    <div class="col-sm" style="margin-top:5%">
+      <a href="{{ url_for('godzilla.all_feeds') }}" class="btn btn-primary btn-lg active btn-block" role="button" aria-pressed="true">Feedbacks</a>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

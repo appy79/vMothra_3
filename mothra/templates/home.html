@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="text-center">
+  <img src="{{ url_for('static', filename='img/nit.png') }}" class="float-left" style="padding-left:5%" alt="...">
+  <img src="{{ url_for('static', filename='img/pccl.png') }}" class="float-right" style="padding-right:5%;" alt="...">
+</div>
+
+<div class="text-center">
+  <img class="img-fluid zoomin" src="{{ url_for('static', filename='img/wip.gif') }}" alt="">
+</div>
+
+<div class="container">
+  <marquee style="font-size:150%; margin:2%" scrollamount="20">
+    {{announcement.message}}
+  </marquee>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <a href="{{ url_for('instructions') }}" class="btn btn-danger btn-lg active btn-block" style="margin-top:2%; margin-bottom:2%;" role="button" aria-pressed="true">Instructions</a>
+    </div>
+    {% if current_user.is_authenticated %}
+    <div class="col-sm">
+      <a href="{{ url_for('challenges.challenge', clevel=current_user.level+1) }}" class="btn btn-success btn-lg active btn-block" style="margin-top:2%; margin-bottom:2%;" role="button" aria-pressed="true">Go Hunting</a>
+    </div>
+    {% else %}
+    <div class="col-sm">
+      <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg active btn-block" style="margin-top:2%; margin-bottom:2%;" role="button" aria-pressed="true">Take flight</a>
+    </div>
+    <div class="col-sm">
+      <a href="{{ url_for('register') }}" class="btn btn-warning btn-lg active btn-block" style="margin-top:2%; margin-bottom:2%;" role="button" aria-pressed="true">Join Hunt</a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container">
+    {% for submission in submissions %}
+      <div class="row" style="margin-top:2%">
+        <div class="col-sm-9">
+          <div class="card bg-dark" style="min-height:100%">
+            <div class="card-body">
+              <h5 class="card-title text-center">{{ clss()[submission.stage-1] }} by {{ users[submission.by-1] }}</h5>
+              <p class="card-text">{{ submission.ans }}</p>
+              <p class="card-text">{{ submission.correct }}</p>
+              <p class="card-text">{{ submission.sub }}</p>
+              <p class="card-text">TOS: {{ submission.time }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

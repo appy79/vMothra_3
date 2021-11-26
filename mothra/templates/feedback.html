@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<script>
+function outputUpdate(age) {
+    document.querySelector('#selected-age').value = age;
+}
+</script>
+
+
+<div class="container">
+  <h1 class="text-center">Feedback</h1>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <div>
+        {{form.rating.label()}}
+        {{form.rating(min=0, max=100, step=1, oninput="outputUpdate(value)", class="form-control-range")  }}<br>
+        <h6 class="text-center"><output for="age" id="selected-age">{{ form.rating.data }}</output></h6>
+      </div>
+      <div class="form-group">
+        {{ form.feed.label(class="form-group") }}
+        {{form.feed(class='form-control bg-dark text-white', rows="10")  }}<br>
+
+      </div>
+      <div class="form-group text-center">
+        {{ form.submit(class="btn btn-danger") }}
+      </div>
+    </form>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,7 @@
+venv/
+*.sqlite
+.DS_Store
+__pycache__
+migrations/
+.env
+mothra/static/challenge_pics/*

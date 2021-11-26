@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+  <div class="text-center">
+    <h1>The {{show()[stage.stage]}} Upgrade</h1>
+  </div>
+  <div class="card-body bg-dark text-center container">
+    <img align='center' class="img-fluid" src="{{ url_for('static', filename='challenge_pics/' + stage.picture) }}">
+    <p>Q. {{stage.question}}</p>
+  </div>
+{% if stage.stage == current_user.level+1 %}
+<h3 class="text-center">Submission</h3>
+{% if attempts %}
+<h4 class="text-center">Attempts Remaining --> {{ att-attempts.atmpts }}</h4>
+{% else %}
+<h4 class="text-center">Attempts Remaining --> {{ att }}</h4>
+{% endif %}
+<form method="POST">
+  {{ form.hidden_tag() }}
+  <div class="form-group">
+    {{ form.ans.label(class="form-group") }}
+    {{form.ans(class='form-control bg-dark text-white')  }}<br>
+  </div>
+  <div class="form-group">
+    {{ form.sub.label(class="form-group") }}
+    {{form.sub(class='form-control bg-dark text-white', rows="10")  }}<br>
+  </div>
+  <div class="form-group text-center">
+      {{ form.submit(class="btn btn-danger") }}
+  </div>
+</form>
+
+{% else %}
+<div class="text-center" style="margin-top:5%">
+  <h3>Cleared on {{ stats.uptime.strftime("%d %b %Y at %I:%M %p") }}</h3>
+</div>
+{% endif %}
+</div>
+
+
+
+{% endblock %}
