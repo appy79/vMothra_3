@@ -67,19 +67,9 @@ def review():
     form = ReviewForm()
     submissions = Submission.query.filter_by(correct=1).all()
     users = User.query.all()
-
-    return render_template(
-        "godzilla/review.html", submissions=submissions, form=form, users=users
-    )
-
-
-@godzilla.route("/checking/<int:submission_id>", methods=["GET", "POST"])
-@godzilla_required
-def checking(submission_id):
     now = datetime.now()
-    form = ReviewForm()
     if form.validate_on_submit():
-        submission = Submission.query.filter_by(id=submission_id).first()
+        submission = Submission.query.filter_by(id=form.submission_id.data).first()
         user = User.query.filter_by(id=submission.by).first()
         if form.review.data == "Accept":
             submission.correct = 2
@@ -119,8 +109,10 @@ def checking(submission_id):
         db.session.add(notification)
 
         db.session.commit()
-
-    return redirect(url_for("godzilla.review"))
+        return redirect(url_for("godzilla.review"))
+    return render_template(
+        "godzilla/review.html", submissions=submissions, form=form, users=users
+    )
 
 
 @godzilla.route("/announce", methods=["GET", "POST"])

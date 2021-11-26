@@ -14,12 +14,13 @@
         <div class="col-sm-3">
           <div class="card bg-dark">
             <div class="card-body">
-              <form method="post" action="{{ url_for('godzilla.checking', submission_id=submission.id) }}">
-                  {{form.hidden_tag()}}
+              <form method="POST">
+                  {{form.csrf_token()}}
                 <div class="form-group">
                   {{ form.review.label(class='form-group')  }}
                   {{ form.review() }}
                 </div>
+                {{ form.submission_id(value=submission.id) }}
                 <div class="form-group text-center">
                   {{ form.submit(class="btn btn-danger") }}
                 </div>

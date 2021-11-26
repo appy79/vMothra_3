@@ -6,6 +6,7 @@ from wtforms import (
     RadioField,
     IntegerField,
     TextAreaField,
+    HiddenField,
 )
 from wtforms.validators import DataRequired, EqualTo, NumberRange
 from wtforms import ValidationError
@@ -64,6 +65,7 @@ class SubmissionForm(FlaskForm):
 
 class ReviewForm(FlaskForm):
     review = RadioField("Review", choices=["Reject", "Accept"])
+    submission_id = HiddenField("submission_id")
     submit = SubmitField("Submit")
 
 
