@@ -8,17 +8,7 @@ import os
 
 # COMMON FUNCTIONS AND OBJECTS
 
-classify = [
-    "born",
-    "noob",
-    "unknown",
-    "amateur",
-    "average",
-    "working",
-    "famous",
-    "creator",
-    "wip",
-]
+classify = os.environ.get("UPGRADES").split(" ")
 
 # CONTEXT PROCESSOR
 
