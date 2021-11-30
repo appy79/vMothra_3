@@ -17,7 +17,7 @@ pip install -r requirements.txt
 touch .env
 ```
 
-### Get the parameters expected from .env.example file and fill them
+### Get the parameters expected from .env.example file to the .env file and fill the values
 
     1) Secret key can be any random string.(String Value)
     2) Attempts are the number of attempts that a person will get for each stage.(Integer Value)
